@@ -30,3 +30,11 @@
 ## 메뉴 구조도
 
 <img width="1139" alt="스크린샷 2023-07-13 오전 12 25 37" src="https://github.com/yuhyejin/tenone/assets/74812194/14ff2593-b760-4625-a8a2-e8a68dba36a0">
+
+
+## 중간현황
+![십일](https://github.com/yuhyejin/tenone/assets/74812194/66ac8606-cbc6-4645-bf05-24788341ccbf)
+
+- 회원가입
+- 로그인
+- 관리자페이지
