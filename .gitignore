@@ -1,5 +1,5 @@
-# Created by https://www.toptal.com/developers/gitignore/api/java,eclipse,macos
-# Edit at https://www.toptal.com/developers/gitignore?templates=java,eclipse,macos
+# Created by https://www.toptal.com/developers/gitignore/api/macos,java,eclipse
+# Edit at https://www.toptal.com/developers/gitignore?templates=macos,java,eclipse
 
 ### Eclipse ###
 .metadata
@@ -126,4 +126,4 @@ Temporary Items
 # iCloud generated files
 *.icloud
 
-# End of https://www.toptal.com/developers/gitignore/api/java,eclipse,macos
+# End of https://www.toptal.com/developers/gitignore/api/macos,java,eclipse
