@@ -81,12 +81,12 @@
        <div>
         <p class="index-text">세상 쉬운 함께 선물하는 방법 <br> &#128071; 십일에서 함께해요. &#128071;</p>
        </div>
-       <button class="w-btn w-btn-indigo" type="submit">
+       <a class="w-btn w-btn-indigo" href="/user/register">
             &#128400; 로그인 하기
-       </button>
-       <button class="w-btn w-btn-indigo" type="submit">
+       </a>
+       <a class="w-btn w-btn-indigo" href="/user/login">
         &#127881; 회원가입 하기
-   </button>
+   	   </a>
 
 
 
