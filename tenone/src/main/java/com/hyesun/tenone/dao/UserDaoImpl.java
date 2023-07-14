@@ -15,7 +15,7 @@ public class UserDaoImpl implements UserDao {
 
 	@Override
 	public void register(User user) throws Exception {
-		session.insert(namespace+"insert", user);
+		session.insert(namespace+"register", user);
 		
 	}
 

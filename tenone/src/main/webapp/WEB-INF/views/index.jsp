@@ -2,7 +2,7 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <html>
 <head>
-	<title>Home</title>
+	<title>십일</title>
 <meta name="viewport" content="width=device-width, initial-scale=1">
   <style>
     * {
@@ -81,10 +81,10 @@
        <div>
         <p class="index-text">세상 쉬운 함께 선물하는 방법 <br> &#128071; 십일에서 함께해요. &#128071;</p>
        </div>
-       <a class="w-btn w-btn-indigo" href="/user/register">
+       <a class="w-btn w-btn-indigo" href="/user/login">
             &#128400; 로그인 하기
        </a>
-       <a class="w-btn w-btn-indigo" href="/user/login">
+       <a class="w-btn w-btn-indigo" href="/user/register">
         &#127881; 회원가입 하기
    	   </a>
 
