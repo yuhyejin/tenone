@@ -13,10 +13,17 @@ public class UserDaoImpl implements UserDao {
 	private SqlSession session;
 	private static String namespace = "com.hyesun.tenone.dao.UserMapper.";
 
+	// 회원가
 	@Override
 	public void register(User user) throws Exception {
 		session.insert(namespace+"register", user);
 		
+	}
+
+	// 로그인 
+	@Override
+	public User login(User user) throws Exception {
+		return session.selectOne(namespace+"login", user);
 	}
 
 }
