@@ -12,7 +12,7 @@
  
  <!-- 로그인 -->
  <select id="login" resultType="User">
- 	select user_id, user_pwd, user_name, shop_name
+ 	select user_id, user_pwd, user_name, shop_name, adminCk
  	from user_info
  	where user_id = #{user_id}
  </select>
