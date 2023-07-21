@@ -17,7 +17,7 @@
 
     body {
         background-image: linear-gradient(rgba(0, 0, 0, 0.527), rgba(0, 0, 0, 0.5)),
-        url("img/indexBg.png" );
+        url("/resources/img/indexBg.png" );
         background-repeat:no-repeat;
         background-position:center center;
         background-size: 390px 845px;
@@ -47,8 +47,8 @@
         font-weight: 300;
     }
 
-    button {
-    margin: 10px;
+   	a {
+    margin-bottom: 10px;
     }
 
     .w-btn {
@@ -74,7 +74,7 @@
 
     <div id="main_contents">      
         <div style="text-align : center;">
-            <img src="img/index_logo.png">       
+            <img src="/resources/img/index_logo.png">       
        </div>
 
        <h2 class="index-title">공동 선물 구매, 십일 &#127873;</h2>

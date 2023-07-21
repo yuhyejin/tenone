@@ -18,7 +18,7 @@
 
     body {
         background-image: linear-gradient(rgba(0, 0, 0, 0.527), rgba(0, 0, 0, 0.5)),
-        url("img/indexBg.png" );
+        url("/resources/img/indexBg.png" );
         background-repeat:no-repeat;
         background-position:center center;
         background-size: 390px 845px;
@@ -48,8 +48,8 @@
         font-weight: 300;
     }
 
-    button {
-    margin: 10px;
+    a {
+    margin-bottom: 10px;
     }
 
     .w-btn {
@@ -133,16 +133,19 @@
 
     <div id="main_contents">      
         <div style="text-align : center;">
-            <img src="img/index_logo.png">       
+            <img src="/resources/img/index_logo.png">       
        </div>
 
-       <h2 class="index-title">반가워요. ${user.user_id} &#128400;</h2>
+       <h2 class="index-title">반가워요. ${user.user_name} &#128400;</h2>
        <div>
         <p class="index-text">세상 쉬운 함께 선물하는 방법 <br> &#128071; 십일에서 함께해요. &#128071;</p>
        </div>
-       <button class="w-btn w-btn-orange" type="submit">
+       <a class="w-btn w-btn-orange" type="submit">
                   쇼핑몰    
-       </button>
+       </a>
+       <c:if test="${user.adminCk == 1 }">
+       	<a class="w-btn w-btn-orange" href="/admin">관리자 화면</a>
+       </c:if>
        <a class="w-btn w-btn-indigo" href="/user/login">
             ooo 진행 현황
        </a>
