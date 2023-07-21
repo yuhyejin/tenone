@@ -473,9 +473,11 @@ tbody tr td {
   }
 
   #main_contents {
+  	position: fixed;
+    top: 110px;
     width: 360px;
     max-width: 600px;
-    padding: 20px;
+    padding: 11px;
   }
 
   .login-title {
@@ -536,6 +538,7 @@ tbody tr td {
     display: flex;
     align-items: center;
     justify-content: space-around;
+    margin-bottom: 70px;
   }
 
   .line-re{
@@ -563,15 +566,16 @@ tbody tr td {
     padding: 10px 10px;
     border: none;
     border-radius: 8px;
-    background-color: #FF984E;
+    background-color: var(--primary-color);
     color: #FFFFFF;
     font-size: 16px;
     margin-top: 10px;
     margin-bottom: 10px;
+    cursor: pointer;
   }
 
   .btn-login:hover {
-    background-color: #E57238;
+    background-color: var(--primary-color);
   }
 
 .bottom{
@@ -595,7 +599,7 @@ tbody tr td {
   }
 
   .btn-signup:hover {
-    color: #FF984E;
+    color: var(--primary-color)E;
   }
 
   /* 회원가입 */
@@ -619,7 +623,7 @@ tbody tr td {
     padding: 10px 40px;
     border: none;
     border-radius: 8px;
-    background-color: #FF984E;
+    background-color: var(--primary-color);
     color: #FFFFFF;
     font-size: 14px;
     margin-bottom: 10px;
@@ -636,4 +640,33 @@ tbody tr td {
     position: fixed;
     top: 55px;
     font-weight: 700;
+}
+
+/* 회원가입 인증*/
+.authNum {
+    display: flex;
+    align-items: center;
+}
+
+.authBox {
+    margin-right: 12px;
+}
+
+.reAuth input[type=text] {
+    width: 47px;
+    height: 65px;
+    line-height: 65px;
+    border: 1px solid #CDCED1;
+    border-radius: 8px;
+    background: #F5F6F7;
+    margin: 8px 0;
+    outline: none;
+    padding: 8px;
+    box-sizing: border-box;
+    transition: .3s;
+}
+
+.adminWrite input[type=text]:focus{
+    border-color: var(--primary-color);
+    box-shadow: 0 0 8px 0 var(--primary-color);
 }

@@ -5,7 +5,7 @@
 <title>로그인</title>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 
-<link href="/resources/css/login.css" rel="stylesheet">
+<link href="/resources/css/style.css" rel="stylesheet">
 <link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css"
 	rel="stylesheet">
 <!-- jQuery 스크립트 -->
@@ -15,9 +15,7 @@
 	<div id="main_contents">
 		<h1 class="login-title">로그인</h1>
 		<form name="form" id="form" action="/user/login" method="post">
-			<c:if test="${msg == false}">
-				<p style="color: #f00;">로그인에 실패했습니다.</p>
-			</c:if>
+			
 			<div class="input-group">
 				<p>
 					<i class='bx bx-envelope'></i> <input type="email" id="user_id"
@@ -33,14 +31,17 @@
 			</div>
 			<div class="line">
 				<div class="line-re">
-					<input type="checkbox" id="save_info" name="save_info"></input>
-					<label for="remem_info" class="remtxt">정보 기억하기</label>
+					<input type="checkbox" id="save_info" name="save_info"></input> <label
+						for="remem_info" class="remtxt">정보 기억하기</label>
 				</div>
 				<div>
 					<a href="#" class="pwtext">비밀번호를 까먹으셨나요?</a>
 				</div>
 			</div>
-			<button href="#" class="btn-login" onclick="loginProcess();">로그인</button>
+			<button type="submit" class="btn-login" id="loginbtn">로그인</button>
+			<c:if test="${msg == false}">
+				<p style="color: #f00;">로그인에 실패했습니다.</p>
+			</c:if>
 		</form>
 
 
@@ -65,67 +66,65 @@
 				}
 			});
 		});
-		/* 
-		 function loginProcess() {
-		
-		 var id = $("#user_id").val();
-		 var pwd = $("#user_pwd").val();
-		 var idChk = $("#save_info").is(":checked");
-		 console.log(id);
 
-		 if (idChk) {
-		 setCookie("Cookie_id", id, 7);
-		 setCookie("Cookie_pwd", pwd, 7);
-		 } else {
-		 deleteCookie("Cookie_id");
-		 deleteCookie("Cookie_pwd");
-		 }
-		 $("#form").submit();
-		 };
+		$(document).ready(function() {
+		    var userInputId = getCookie("userInputId");
+		    var setCookieYN = getCookie("setCookieYN");
+		    
+		    if(setCookieYN == 'Y') {
+		        $("#save_info").prop("checked", true);
+		    } else {
+		        $("#save_info").prop("checked", false);
+		    }
+		    
+		    $("#user_id").val(userInputId); 
+		    
+		    //로그인 버튼 클릭
+		    $('#loginbtn').click(function() {
+		        if($("#save_info").is(":checked")){ 
+		            var userInputId = $("#user_id").val();
+		            setCookie("userInputId", userInputId, 60); 
+		            setCookie("setCookieYN", "Y", 60);
+		        } else {
+		            deleteCookie("userInputId");
+		            deleteCookie("setCookieYN");
+		        }
+		        
+		        document.fform.submit();
+		    });
+		});
 
-		 $(function() {
-		 var id = getCookie("Cookie_id");
-		 var pwd = getCookie("Cookie_pwd");
+		//쿠키값 Set
+		function setCookie(cookieName, value, exdays){
+		    var exdate = new Date();
+		    exdate.setDate(exdate.getDate() + exdays);
+		    var cookieValue = escape(value) + ((exdays==null) ? "" : "; expires=" + 
+		    exdate.toGMTString());
+		    document.cookie = cookieName + "=" + cookieValue;
+		}
 
-		 if (id) {
-		 $("#user_id").val(id);
-		 $("#user_pwd").val(pwd);
-		 $("#save_info").attr("checked", true);
-		 }
-		 });
+		//쿠키값 Delete
+		function deleteCookie(cookieName){
+		    var expireDate = new Date();
+		    expireDate.setDate(expireDate.getDate() - 1);
+		    document.cookie = cookieName + "= " + "; expires=" + expireDate.toGMTString();
+		}
 
-		 function setCookie(cookieName, value, exdays) {
-		 var exdays = new Date();
-		 exdays.setDate(exdays.getDate() + exdays);
-		 var cookieValue = escape(value)
-		 + ((exdays == null) ? "" : "; expires="
-		 + exdays.toGMTString());
-		 document.cookie = cookieName + "=" + cookieValue;
-		 }
-
-		 function getCookie(cookieName) {
-		 cookieName = cookieName + '=';
-		 var cookieData = document.cookie;
-		 var start = cookieData.indexOf(cookieName);
-		 var cookieValue = '';
-
-		 if (start != -1) {
-		 start += cookieName.length;
-		 var end = cookieData.indexOf(';', start);
-		 }
-		 if (end == -1) {
-		 end = cookieData.length;
-		 cookieValue = cookieData.substring(start, end);
-		 }
-		 return unescape(cookieValue);
-		 }
-
-		 function deleteCookie(cookieName) {
-		 var expireDate = new Date();
-		 expireDate.setDate(expireDate.getDate() - 1);
-		 document.cookie = cookieName + "= " + "; expires="
-		 + expireDate.toGMTString();
-		 } */
+		//쿠키값 가져오기
+		function getCookie(cookie_name) {
+		    var x, y;
+		    var val = document.cookie.split(';');
+		    
+		    for (var i = 0; i < val.length; i++) {
+		        x = val[i].substr(0, val[i].indexOf('='));
+		        y = val[i].substr(val[i].indexOf('=') + 1);
+		        x = x.replace(/^\s+|\s+$/g, ''); // 앞과 뒤의 공백 제거하기
+		        
+		        if (x == cookie_name) {
+		          return unescape(y); // unescape로 디코딩 후 값 리턴
+		        }
+		    }
+		}
 	</script>
 </body>
 </html>
