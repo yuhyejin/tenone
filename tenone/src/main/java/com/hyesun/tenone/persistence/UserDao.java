@@ -1,4 +1,4 @@
-package com.hyesun.tenone.dao;
+package com.hyesun.tenone.persistence;
 
 import com.hyesun.tenone.domain.User;
 

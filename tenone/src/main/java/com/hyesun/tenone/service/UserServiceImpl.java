@@ -5,8 +5,8 @@ import javax.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.hyesun.tenone.dao.UserDao;
 import com.hyesun.tenone.domain.User;
+import com.hyesun.tenone.persistence.UserDao;
 
 @Service
 public class UserServiceImpl implements UserService {

@@ -1,4 +1,4 @@
-package com.hyesun.tenone.dao;
+package com.hyesun.tenone.persistence;
 
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
