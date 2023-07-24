@@ -22,12 +22,12 @@ public class Goods {
     foreign key(sellerId) references user_info(user_id)
 );
  */
-	private int goodsId;
+	private Integer goodsId;
 	private String sellerId;
 	private String goodsName;
-	private int goodsPrice;
+	private Integer goodsPrice;
 	private String goodsImg;
-	private int goodsStock;
+	private Integer goodsStock;
 	private String goodsOtp;
 	private String goodsDeli;
 	private String goodsContents;
@@ -35,10 +35,10 @@ public class Goods {
 	private String goodsStatu;
 	private Date regDate;
 	private Date updateDate;
-	public int getGoodsId() {
+	public Integer getGoodsId() {
 		return goodsId;
 	}
-	public void setGoodsId(int goodsId) {
+	public void setGoodsId(Integer goodsId) {
 		this.goodsId = goodsId;
 	}
 	public String getSellerId() {
@@ -53,10 +53,10 @@ public class Goods {
 	public void setGoodsName(String goodsName) {
 		this.goodsName = goodsName;
 	}
-	public int getGoodsPrice() {
+	public Integer getGoodsPrice() {
 		return goodsPrice;
 	}
-	public void setGoodsPrice(int goodsPrice) {
+	public void setGoodsPrice(Integer goodsPrice) {
 		this.goodsPrice = goodsPrice;
 	}
 	public String getGoodsImg() {
@@ -65,10 +65,10 @@ public class Goods {
 	public void setGoodsImg(String goodsImg) {
 		this.goodsImg = goodsImg;
 	}
-	public int getGoodsStock() {
+	public Integer getGoodsStock() {
 		return goodsStock;
 	}
-	public void setGoodsStock(int goodsStock) {
+	public void setGoodsStock(Integer goodsStock) {
 		this.goodsStock = goodsStock;
 	}
 	public String getGoodsOtp() {

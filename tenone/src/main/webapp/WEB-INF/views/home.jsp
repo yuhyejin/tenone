@@ -140,7 +140,7 @@
        <div>
         <p class="index-text">세상 쉬운 함께 선물하는 방법 <br> &#128071; 십일에서 함께해요. &#128071;</p>
        </div>
-       <a class="w-btn w-btn-orange" type="submit">
+       <a class="w-btn w-btn-orange" href="/admin/list">
                   쇼핑몰    
        </a>
        <c:if test="${user.adminCk == 1 }">

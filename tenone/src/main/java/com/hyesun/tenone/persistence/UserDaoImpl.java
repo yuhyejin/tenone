@@ -11,9 +11,9 @@ public class UserDaoImpl implements UserDao {
 	
 	@Autowired
 	private SqlSession session;
-	private static String namespace = "com.hyesun.tenone.dao.UserMapper.";
+	private static String namespace = "com.hyesun.tenone.mapper.UserMapper.";
 
-	// 회원가
+	// 회원가입
 	@Override
 	public void register(User user) throws Exception {
 		session.insert(namespace+"register", user);

@@ -10,4 +10,12 @@
 		values (#{sellerId}, #{goodsName}, #{goodsPrice}, #{goodsStock}, #{goodsOtp}, #{goodsDeli}, #{goodsContents}, #{cateCode}, #{goodsStatu});  
 </insert>
 
+<!-- 상품 목록 -->
+<select id="goodslist" resultType="Goods">
+	select goodsId, goodsName, cateCode, goodsPrice, goodsStock, goodsDeli, goodsOtp, goodsImg, goodsContents, goodsStatu, regDate, sellerId
+	from tb_goods
+	where sellerId = #{sellerId}
+		order by goodsId desc
+</select>
+
 </mapper>
