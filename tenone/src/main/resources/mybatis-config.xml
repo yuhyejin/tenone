@@ -4,7 +4,8 @@
         "http://mybatis.org/dtd/mybatis-3-config.dtd">
 <configuration>
     <typeAliases>
-        <typeAlias alias="User" type="com.hyesun.tenone.domain.User"/>
+        <typeAlias type="com.hyesun.tenone.domain.User" alias="User"/>
+        <typeAlias type="com.hyesun.tenone.domain.Goods" alias="Goods"/>
      
     </typeAliases>
 </configuration>

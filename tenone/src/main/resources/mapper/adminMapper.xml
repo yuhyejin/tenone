@@ -5,7 +5,7 @@
 <mapper namespace="com.hyesun.tenone.mapper.AdminMapper">
  
 <!-- 상품 등록 -->
-<insert id="write">
+<insert id="write" parameterType="Goods">
 	insert into tb_goods (sellerId, goodsName, goodsPrice, goodsStock, goodsOtp, goodsDeli, goodsContents, cateCode, goodsStatu)
 		values (#{sellerId}, #{goodsName}, #{goodsPrice}, #{goodsStock}, #{goodsOtp}, #{goodsDeli}, #{goodsContents}, #{cateCode}, #{goodsStatu});  
 </insert>
@@ -17,5 +17,10 @@
 	where sellerId = #{sellerId}
 		order by goodsId desc
 </select>
+
+<!-- 상품 조회 
+<select id="goodsView" resultType="Goods">
+	select 
+</select>-->
 
 </mapper>

@@ -1,3 +1,4 @@
+
 package com.hyesun.tenone;
 
 import java.util.List;
@@ -27,7 +28,7 @@ public class AdminController {
 	@Inject
 	AdminService adminService;
 	
-	// 상품 등
+	// 상품 등록
 	@PostMapping("/write")
 	public String goodsWrite(Goods gd) throws Exception {
 		adminService.write(gd);
@@ -44,6 +45,13 @@ public class AdminController {
 		List<Goods> list = adminService.goodsList(sellerId);
 		model.addAttribute("list", list);
 		return "list";
+	}
+	
+	// 상품 조회 
+	@GetMapping("/view")
+	public String getGoodsView() throws Exception {
+		logger.info("get goods view");
+		return "view";
 	}
 
 }

@@ -47,6 +47,11 @@ public class UserController {
 		String pass = passEncoder.encode(inputPass);
 		user.setUser_pwd(pass);
 		
+		if(user.getShop_name() != "") {
+			logger.info("샵네임이이이이잉======"+user.getShop_name());
+			user.setAdminCk(1);
+		}
+		
 		userService.register(user);
 		
 		return "redirect:/";
