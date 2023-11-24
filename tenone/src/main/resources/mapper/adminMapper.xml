@@ -5,9 +5,9 @@
 <mapper namespace="com.hyesun.tenone.mapper.AdminMapper">
  
 <!-- 상품 등록 -->
-<insert id="write" parameterType="Goods">
-	insert into tb_goods (sellerId, goodsName, goodsPrice, goodsStock, goodsOtp, goodsDeli, goodsContents, cateCode, goodsStatu)
-		values (#{sellerId}, #{goodsName}, #{goodsPrice}, #{goodsStock}, #{goodsOtp}, #{goodsDeli}, #{goodsContents}, #{cateCode}, #{goodsStatu});  
+<insert id="write">
+	insert into tb_goods (sellerId, goodsName, goodsPrice, goodsStock, goodsOtp, goodsDeli, goodsContents, cateCode, goodsStatu, goodsImg)
+		values (#{sellerId}, #{goodsName}, #{goodsPrice}, #{goodsStock}, #{goodsOtp}, #{goodsDeli}, #{goodsContents}, #{cateCode}, #{goodsStatu}, #{goodsImg});  
 </insert>
 
 <!-- 상품 목록 -->

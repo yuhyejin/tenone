@@ -23,18 +23,18 @@ public class Goods {
 );
  */
 	private Integer goodsId;
-	private String sellerId;
-	private String goodsName;
-	private Integer goodsPrice;
-	private String goodsImg;
-	private Integer goodsStock;
-	private String goodsOtp;
-	private String goodsDeli;
-	private String goodsContents;
-	private String cateCode;
-	private String goodsStatu;
-	private Date regDate;
-	private Date updateDate;
+	private String sellerId;	// 판매자 ID
+	private String goodsName;	// 상품명 
+	private Integer goodsPrice; // 상품가격 
+	private String goodsImg;	// 상품 이미지
+	private Integer goodsStock;	// 상품재고
+	private String goodsOtp;	// 상품옵션 
+	private String goodsDeli;	// 배송정책 
+	private String goodsContents; // 상품설명 
+	private String cateCode;	// 카테고리
+	private String goodsStatu;	// 판매상태  
+	private Date regDate;	// 등록일자 
+	private Date updateDate;	// 수정일
 	public Integer getGoodsId() {
 		return goodsId;
 	}
