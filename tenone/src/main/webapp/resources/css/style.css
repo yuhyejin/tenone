@@ -43,10 +43,210 @@ body.dark {
     --text-color3: #9CA3AF;
 }
 
+.d-flex {
+	display: flex;
+}
+
+.ml5 {
+	margin-left: 5px;
+}
+
+.mt5 {
+	margin-top: 5px;
+}
+
+.btn {
+	display: inline-block;
+    width: auto;
+    padding: 10px 17px;
+    border: none;
+    border-radius: 5px;
+    background-color: var(--primary-color);
+    color: #FFFFFF;
+    font-size: 13px;
+    cursor:pointer;
+}
+
 .sidebar .text {
     font-size: 16px;
     font-weight: 400;
     color: var(--text-color);
+}
+
+
+/* ===== 관리자 글쓰기 사이드바 =====*/
+.adminSidebar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 450px;
+    background-color: white;
+    border-right: solid #E5E7EB;
+}
+
+.adminSidebar .side_head {
+    border-bottom: 1px solid #e2e2ea;
+    position: relative;
+    padding: 8px 10px;
+    display: flex;
+    align-items: center;
+}
+
+.adminSidebar .side_head .title .exit{
+    position: absolute;
+    margin-left: 14px;
+    font-size: 18px;
+    color: #B9B9C5;
+}
+
+a {
+    text-decoration: none;
+    outline: none !important;
+}
+
+.adminSidebar .side_head .title {
+    font-size: 16px;
+    font-weight: 700;
+    line-height: 25px;
+    margin-left: 135px;
+    color: #222;
+}
+
+.adminSidebar .left_scrollbar {
+    height: calc(100% - 133px);
+    overflow: auto;
+}
+
+.adminSidebar label {
+    font-size: 14px;
+    font-weight: 550;
+    color: var(--text-color);
+    margin-bottom: 3px;
+}
+
+.adminSidebar .input_box_text {
+    display: flex;
+    align-items: center;
+    padding: .375rem .75rem;
+    font-size: 1rem;
+    line-height: 1.5;
+    color: var(--text-color);
+    text-align: center;
+    white-space: nowrap;
+    border-right: 1px solid #ced4da;
+    border-top: 1px solid #ced4da;
+    border-bottom: 1px solid #ced4da;
+    border-radius: .375rem;
+}
+
+.adminSidebar .right_border_none {
+    border: 1px solid #ced4da;
+    border-right: none !important;
+}
+
+.adminSidebar .label_text {
+    margin-left: 5px;
+    font-size: 12px;
+    color: #9e9e9e;
+}
+
+.adminSidebar .sellstate {
+    display: flex;
+    justify-content: space-around;
+    width: 400px;
+    border: 1px solid #E5E7EB;
+    border-radius: 8px;
+    padding: 15px;
+}
+
+.adminSidebar .add_img_uploader {
+    position: relative;
+    width: 76px;
+    height: 76px;
+    display: inline-block;
+    margin: 2.5px;
+    border: 1px dashed #DCDCE4;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-top: 5px;
+}
+
+.adminSidebar .add_img_uploader .add_img_icon {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: var(--primary-color);
+    font-size: 20px;
+}
+
+.adminSidebar .fileUploade {
+    width: 76px;
+    height: 76px;
+    cursor: pointer;
+}
+
+.adminSidebar .preview {
+    width: 75px;
+    height: 75px;
+    margin-right: 5px;
+    margin-top: 5px;
+}
+
+.adminSidebar .preview_container {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.btn_footer {
+    position: fixed;
+    bottom: 10px;
+    transform: translateX(170%);
+}
+
+.rightSidebar {
+    margin-left: 450px;
+    width: calc(100% - 450px);
+}
+
+.rightSidebar .wrapper {
+    top: 0;
+    height: 100%;
+    width: 100%;
+    background-color: white;
+    border-right: solid #E5E7EB;
+}
+
+.rightSidebar .wrapper .right_head {
+    border-bottom: 1px solid #e2e2ea;
+    position: relative;
+    padding: 17px 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.rightSidebar .wrapper .right_head .right_title {
+    font-size: 16px;
+    font-weight: 700;
+    line-height: 25px;
+    margin-right: 290px;
+    color: #222;
+}
+
+.rightSidebar .admin_content {
+    margin-left: 50px;
+    margin-right: 50px;
+}
+
+.rightSidebar .textarea {
+    width: 1000px;
+    height: 800px;
+}
+
+.rightSidebar .ck-content {
+    height: 900px;
 }
 
 
@@ -472,13 +672,19 @@ tbody tr td {
     margin: 0;
   }
 
-  #main_contents {
+/*   #main_contents {
   	position: fixed;
     top: 110px;
     width: 360px;
     max-width: 600px;
     padding: 11px;
-  }
+  } */
+  
+  #main_contents {
+      width: 360px;
+      max-width: 600px;
+      padding: 20px;
+    }
 
   .login-title {
     font-size: 30px;
@@ -492,11 +698,51 @@ tbody tr td {
     margin: 0 auto;
     margin-bottom: 15px;
   }
-
+  
   .input-group p{
+      display: flex;
+      align-items: center;
+      width: 320px;
+      font-size: 14px;
+      padding: 10px 10px;
+      border: 1px solid #A2A2A6;
+      border-radius: 3px;
+      box-sizing: border-box;
+      transition: .3s;
+    }
+
+  .input-group .register_input{
     display: flex;
     align-items: center;
     width: 320px;
+    font-size: 14px;
+    padding: 10px 10px;
+    border: 1px solid #A2A2A6;
+    border-radius: 3px;
+    box-sizing: border-box;
+    transition: .3s;
+  }
+  
+  #mail_check_input_false {
+	background-color: #ebebe4;
+  }
+
+#mail_check_input_true {
+	background-color:white;
+}
+
+.correct {
+	color : green;
+}
+
+.incorrect {
+	color : #FF0000;
+}
+  
+  .input-group .email_check {
+  	display: flex;
+    align-items: center;
+    width: 210px;
     font-size: 14px;
     padding: 10px 10px;
     border: 1px solid #A2A2A6;
@@ -577,6 +823,12 @@ tbody tr td {
   .btn-login:hover {
     background-color: var(--primary-color);
   }
+  
+   #main_contents .bottom{
+      position: fixed;
+      bottom: 55px;
+      margin-left: 50px;
+    }
 
 .bottom{
     position: fixed;
@@ -599,7 +851,7 @@ tbody tr td {
   }
 
   .btn-signup:hover {
-    color: var(--primary-color)E;
+    color: var(--primary-color);
   }
 
   /* 회원가입 */
@@ -670,3 +922,4 @@ tbody tr td {
     border-color: var(--primary-color);
     box-shadow: 0 0 8px 0 var(--primary-color);
 }
+

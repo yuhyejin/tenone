@@ -144,7 +144,7 @@
                   쇼핑몰    
        </a>
        <c:if test="${user.adminCk == 1 }">
-       	<a class="w-btn w-btn-orange" href="/admin">관리자 화면</a>
+       	<a class="w-btn w-btn-orange" href="/admin/list">관리자 화면</a>
        </c:if>
        <a class="w-btn w-btn-indigo" href="/user/login">
             ooo 진행 현황
