@@ -9,15 +9,15 @@
     <link href="/resources/css/style.css" rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css" rel="stylesheet"/>
     <link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet">
-    
+    <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
     
   </head>
 <body>
-	<form role="form" method="post" action="/admin/write" autocomplete="off">
+	<form role="form" method="post" action="/admin/postWrite" autocomplete="off">
 		<div class="adminSidebar">
 	        <div>
 	          <div class="side_head d-flex flex-row mb-2">
-	            <a class="exit p-2"><i class='fs-4 text-secondary bx bx-log-out'></i></a>
+	            <a class="exit p-2" href="/admin/list" style="cursor: pointer;"><i class='fs-4 text-secondary bx bx-log-out'></i></a>
 	            <span class="title p-2">상품 설정</span>
 	          </div>
 	
@@ -108,7 +108,7 @@
 	            </div>
 	          </div>
 	          <div class="btn_footer mt-3" style="position: fixed; bottom: 10px; transform: translateX(170%);">
-				  <button type="button" class="btn btn-outline-secondary me-1">나가기</button>
+				  <button type="button" id="back_btn" class="btn btn-outline-secondary me-1" >나가기</button>
 				  <button type="submit" class="btn btn-outline-secondary">저장하기</button>
 			  </div>
 	        </div>
@@ -134,6 +134,10 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js"></script>
     
     <script>
+	   /*  $("#back_btn").click(function(){
+	    	location.href="/admin/list";
+    	}); */
+    
       // 숫자 3자리에서 콤마
       function comma(str) {
         str = String(str);
