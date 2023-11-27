@@ -18,9 +18,34 @@
 		order by goodsId desc
 </select>
 
-<!-- 상품 조회 
-<select id="goodsView" resultType="Goods">
-	select 
-</select>-->
+<!-- 상품 수정 -->
+<update id="goodsUpdate">
+	update tb_goods
+	set 
+		goodsName = #{goodsName}, 
+		goodsPrice = #{goodsPrice}, 
+		goodsStock = #{goodsStock}, 
+		goodsOtp = #{goodsOtp}, 
+		goodsDeli = #{goodsDeli}, 
+		goodsContents = #{goodsContents}, 
+		cateCode = #{cateCode}, 
+		goodsStatu = #{goodsStatu}, 
+		goodsImg = #{goodsImg}
+	where goodsId = #{goodsId} and sellerId = #{sellerId}
+	
+</update>
+
+<!-- 상품 조회 --> 
+<select id="goodsView" parameterType="map" resultType="Goods">
+	select goodsId, goodsName, cateCode, goodsPrice, goodsStock, goodsDeli, goodsOtp, goodsImg, goodsContents, goodsStatu, regDate, sellerId
+	from tb_goods
+	where goodsId = #{goodsId} and sellerId = #{sellerId}
+</select>
+
+<!-- 상품 삭제 -->
+<delete id="goodsDelete" parameterType="map">
+    DELETE FROM tb_goods
+    WHERE goodsId = #{goodsId} AND sellerId = #{sellerId}
+</delete>
 
 </mapper>

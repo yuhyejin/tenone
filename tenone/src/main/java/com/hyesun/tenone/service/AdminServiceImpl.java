@@ -23,8 +23,23 @@ public class AdminServiceImpl implements AdminService {
 	// 상품목록
 	@Override
 	public List<Goods> goodsList(String sellerId) throws Exception {
-		System.out.println("서비스");
 		return adminDao.goodsList(sellerId);
 	}
+	
+	// 상품조회
+	@Override
+	public Goods goodsView(Integer goodsId, String sellerId) throws Exception {
+		return adminDao.goodsView(goodsId, sellerId);
+	}
 
+	// 상품수정
+	@Override
+	public void goodsUpdate(Goods gd) throws Exception {
+		adminDao.goodsUpdate(gd);
+	}
+	
+	// 상품삭제
+	public void goodsDelete(Integer goodsId, String sellerId) throws Exception {
+		adminDao.goodsDelete(goodsId, sellerId);
+	}
 }
