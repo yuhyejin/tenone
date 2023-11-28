@@ -20,12 +20,6 @@ public class AdminServiceImpl implements AdminService {
 		adminDao.write(gd);
 	}
 	
-	// 상품목록
-	@Override
-	public List<Goods> goodsList(String sellerId) throws Exception {
-		return adminDao.goodsList(sellerId);
-	}
-	
 	// 상품조회
 	@Override
 	public Goods goodsView(Integer goodsId, String sellerId) throws Exception {
@@ -41,5 +35,17 @@ public class AdminServiceImpl implements AdminService {
 	// 상품삭제
 	public void goodsDelete(Integer goodsId, String sellerId) throws Exception {
 		adminDao.goodsDelete(goodsId, sellerId);
+	}
+	
+	// 게시물 총 갯수
+	@Override
+	public int goodsCount(String sellerId) throws Exception {
+		return adminDao.goodsCount(sellerId);
+	}
+	
+	// 게시물 목록 + 페이징
+	@Override
+	public List<Goods> getListPaging(String sellerId, int displayPost, int postNum) throws Exception {
+		return adminDao.getListPaging(sellerId, displayPost, postNum);
 	}
 }

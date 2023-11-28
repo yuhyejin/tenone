@@ -23,12 +23,6 @@ public class AdminDaoImpl implements AdminDao {
 		session.insert(namespace + "write", gd);
 	}
 	
-	// 상품목록
-	@Override
-	public List<Goods> goodsList(String sellerId) throws Exception {
-		return session.selectList(namespace+"goodslist",sellerId);
-	}
-	
 	// 상품조회
 	@Override
 	public Goods goodsView(Integer goodsId, String sellerId) throws Exception {
@@ -45,12 +39,32 @@ public class AdminDaoImpl implements AdminDao {
 	}
 	
 	// 상품삭제
+	@Override
 	public void goodsDelete(Integer goodsId, String sellerId) throws Exception {
 		Map<String, Object> params = new HashMap<>();
 		params.put("goodsId", goodsId);
 		params.put("sellerId", sellerId);
-		System.out.println("hashmap ====: " + params);
+		
 		session.delete(namespace + "goodsDelete", params);
+	}
+	
+	// 게시물 총 갯수
+	@Override
+	public int goodsCount(String sellerId) throws Exception {
+		return session.selectOne(namespace + "goodsCount", sellerId);
+	}
+	
+	// 게시물 목록 + 페이징
+	@SuppressWarnings("unchecked")
+	@Override
+	public List<Goods> getListPaging(String sellerId, int displayPost, int postNum) throws Exception {
+		@SuppressWarnings("rawtypes")
+		HashMap data = new HashMap();
+		data.put("sellerId", sellerId);
+		data.put("displayPost", displayPost);
+		data.put("postNum", postNum);
+		
+		return session.selectList(namespace + "getListPaging", data);
 	}
 	
 }

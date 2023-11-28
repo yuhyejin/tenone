@@ -4,6 +4,21 @@
 
 <mapper namespace="com.hyesun.tenone.mapper.AdminMapper">
  
+<!-- 게시물 목록(페이징) -->
+<select id="getListPaging" resultType="Goods" parameterType="hashMap">
+   select goodsId, goodsName, cateCode, goodsPrice, goodsStock, goodsDeli, goodsOtp, goodsImg, goodsContents, goodsStatu, regDate, sellerId
+   from tb_goods
+   where sellerId = #{sellerId}
+   order by goodsId desc
+   	limit #{displayPost}, #{postNum}
+</select>
+
+<!-- 게시물 총 갯수 -->
+<select id="goodsCount" resultType="int">
+	select count(goodsId) from tb_goods
+	where sellerId = #{sellerId}
+</select>
+ 
 <!-- 상품 등록 -->
 <insert id="write">
 	insert into tb_goods (sellerId, goodsName, goodsPrice, goodsStock, goodsOtp, goodsDeli, goodsContents, cateCode, goodsStatu, goodsImg)

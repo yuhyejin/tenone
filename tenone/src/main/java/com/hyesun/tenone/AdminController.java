@@ -11,14 +11,14 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.servlet.mvc.support.RedirectAttributes;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import com.hyesun.tenone.domain.Goods;
+import com.hyesun.tenone.domain.Paging;
 import com.hyesun.tenone.domain.User;
 import com.hyesun.tenone.service.AdminService;
 
@@ -81,17 +81,28 @@ public class AdminController {
 			
 		return "redirect:list";
 	}
-
-	// 상품 목록 
+	
+	// 상품목록 (페이징)
 	@GetMapping("/list")
-	public String getGoodsList(User user, HttpServletRequest req, Model model) throws Exception {
+	public String getListPaging(@RequestParam("num") int num, Model model, HttpServletRequest req) throws Exception {
 		logger.info("get goods list");
 		
 		HttpSession session = req.getSession();
 		User sellerInfo = (User)session.getAttribute("user");
 		String sellerId = (String)sellerInfo.getUser_id();
-		List<Goods> list = adminService.goodsList(sellerId);
+		
+		Paging page = new Paging();
+		
+		page.setNum(num);
+		page.setCount(adminService.goodsCount(sellerId));
+		
+		List<Goods> list = null;
+		list = adminService.getListPaging(sellerId, page.getDisplayPost(), page.getEndPageNum());
+		
 		model.addAttribute("list", list);
+		model.addAttribute("page", page);
+		model.addAttribute("select", num);
+		
 		return "admin/adminHome";
 	}
 	

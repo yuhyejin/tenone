@@ -163,6 +163,40 @@
                </tbody>
             </table>
         </div>
+        
+        <nav aria-label="Page navigation example">
+		  <ul class="pagination mt-4 ms-4">
+			<c:if test="${page.prev}">
+				<li class="page-item">
+			      <a class="page-link" href="/admin/list?num=${page.startPageNum -1}" aria-label="Previous">
+			        <span aria-hidden="true">&laquo;</span>
+			      </a>
+			    </li>
+			  </c:if>
+		  
+			  <c:forEach begin="${page.startPageNum }" end="${page.endPageNum}" var="num">
+			  	<c:if test="${select != num}">
+			  		<li class="page-item">
+			  			<a class="page-link" href="/admin/list?num=${num}">${num}</a>
+			  		</li>
+			  	</c:if>
+			  	<c:if test="${select == num}">
+			  		<li class="page-item active" aria-current="page">
+			  			<a class="page-link" href="/admin/list?num=${num}">${num}</a>
+			  		</li>
+			  	</c:if>
+			  </c:forEach>
+		  
+		    <c:if test="${page.next}">
+		    	<li class="page-item">
+			      <a class="page-link" href="/admin/list?num=${page.endPageNum + 1}" aria-label="Next">
+			        <span aria-hidden="true">&raquo;</span>
+			      </a>
+			    </li>
+		    </c:if>
+		  </ul>
+		</nav>
+        
         <!-- 모달 -->
         <div class="modal" id="modal">
             <div class="modal_body">
