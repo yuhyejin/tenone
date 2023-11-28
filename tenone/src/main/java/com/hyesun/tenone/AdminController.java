@@ -91,6 +91,8 @@ public class AdminController {
 		User sellerInfo = (User)session.getAttribute("user");
 		String sellerId = (String)sellerInfo.getUser_id();
 		
+		Goods sellerShop = adminService.sellerInfo(sellerId);
+		
 		Paging page = new Paging();
 		
 		page.setNum(num);
@@ -102,6 +104,7 @@ public class AdminController {
 		model.addAttribute("list", list);
 		model.addAttribute("page", page);
 		model.addAttribute("select", num);
+		model.addAttribute("sellerShop", sellerShop.getShop_name());
 		
 		return "admin/adminHome";
 	}
@@ -133,5 +136,4 @@ public class AdminController {
 //		model.addAttribute("goods", goods);
 //	}
 	
-
 }

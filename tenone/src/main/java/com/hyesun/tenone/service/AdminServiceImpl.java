@@ -48,4 +48,11 @@ public class AdminServiceImpl implements AdminService {
 	public List<Goods> getListPaging(String sellerId, int displayPost, int postNum) throws Exception {
 		return adminDao.getListPaging(sellerId, displayPost, postNum);
 	}
+	
+	// 판매자 정보
+	@Override
+	public Goods sellerInfo(String sellerId) throws Exception {
+		return adminDao.sellerInfo(sellerId);
+	}
+	
 }

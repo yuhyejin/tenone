@@ -23,4 +23,7 @@ public interface AdminService {
 	
 	// 게시물 목록 + 페이징
 	public List<Goods> getListPaging(String sellerId, int displayPost, int postNum) throws Exception;
+
+	// 판매자 정보 
+	public Goods sellerInfo(String sellerId) throws Exception;
 }

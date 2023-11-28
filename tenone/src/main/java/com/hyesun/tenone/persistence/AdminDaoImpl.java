@@ -67,4 +67,10 @@ public class AdminDaoImpl implements AdminDao {
 		return session.selectList(namespace + "getListPaging", data);
 	}
 	
+	// 판매자 정보 
+	@Override
+	public Goods sellerInfo(String sellerId) throws Exception {
+		return session.selectOne(namespace+"sellerInfo", sellerId);
+	}
+	
 }

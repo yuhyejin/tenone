@@ -26,7 +26,7 @@
 
                 <div class="text header-text">
                     <span class="admin">admin</span>
-                    <span class="name">판매자 아이디</span>
+                    <span class="name">${sellerShop}</span>
                 </div>
             </div>
         </header>
@@ -156,9 +156,6 @@
 	                    </td>
 	                </tr>
                </c:forEach>
-                
-                
-                
                 
                </tbody>
             </table>

@@ -4,63 +4,72 @@
 
 <mapper namespace="com.hyesun.tenone.mapper.AdminMapper">
  
-<!-- 게시물 목록(페이징) -->
-<select id="getListPaging" resultType="Goods" parameterType="hashMap">
-   select goodsId, goodsName, cateCode, goodsPrice, goodsStock, goodsDeli, goodsOtp, goodsImg, goodsContents, goodsStatu, regDate, sellerId
-   from tb_goods
-   where sellerId = #{sellerId}
-   order by goodsId desc
-   	limit #{displayPost}, #{postNum}
-</select>
-
-<!-- 게시물 총 갯수 -->
-<select id="goodsCount" resultType="int">
-	select count(goodsId) from tb_goods
-	where sellerId = #{sellerId}
-</select>
- 
-<!-- 상품 등록 -->
-<insert id="write">
-	insert into tb_goods (sellerId, goodsName, goodsPrice, goodsStock, goodsOtp, goodsDeli, goodsContents, cateCode, goodsStatu, goodsImg)
-		values (#{sellerId}, #{goodsName}, #{goodsPrice}, #{goodsStock}, #{goodsOtp}, #{goodsDeli}, #{goodsContents}, #{cateCode}, #{goodsStatu}, #{goodsImg});  
-</insert>
-
-<!-- 상품 목록 -->
-<select id="goodslist" resultType="Goods">
-	select goodsId, goodsName, cateCode, goodsPrice, goodsStock, goodsDeli, goodsOtp, goodsImg, goodsContents, goodsStatu, regDate, sellerId
-	from tb_goods
-	where sellerId = #{sellerId}
-		order by goodsId desc
-</select>
-
-<!-- 상품 수정 -->
-<update id="goodsUpdate">
-	update tb_goods
-	set 
-		goodsName = #{goodsName}, 
-		goodsPrice = #{goodsPrice}, 
-		goodsStock = #{goodsStock}, 
-		goodsOtp = #{goodsOtp}, 
-		goodsDeli = #{goodsDeli}, 
-		goodsContents = #{goodsContents}, 
-		cateCode = #{cateCode}, 
-		goodsStatu = #{goodsStatu}, 
-		goodsImg = #{goodsImg}
-	where goodsId = #{goodsId} and sellerId = #{sellerId}
+	<!-- 게시물 목록(페이징) -->
+	<select id="getListPaging" resultType="Goods" parameterType="hashMap">
+	   select goodsId, goodsName, cateCode, goodsPrice, goodsStock, goodsDeli, goodsOtp, goodsImg, goodsContents, goodsStatu, regDate, sellerId
+	   from tb_goods
+	   where sellerId = #{sellerId}
+	   order by goodsId desc
+	   	limit #{displayPost}, #{postNum}
+	</select>
 	
-</update>
-
-<!-- 상품 조회 --> 
-<select id="goodsView" parameterType="map" resultType="Goods">
-	select goodsId, goodsName, cateCode, goodsPrice, goodsStock, goodsDeli, goodsOtp, goodsImg, goodsContents, goodsStatu, regDate, sellerId
-	from tb_goods
-	where goodsId = #{goodsId} and sellerId = #{sellerId}
-</select>
-
-<!-- 상품 삭제 -->
-<delete id="goodsDelete" parameterType="map">
-    DELETE FROM tb_goods
-    WHERE goodsId = #{goodsId} AND sellerId = #{sellerId}
-</delete>
+	<!-- 게시물 총 갯수 -->
+	<select id="goodsCount" resultType="int">
+		select count(goodsId) from tb_goods
+		where sellerId = #{sellerId}
+	</select>
+	
+	<!-- 판매자 정보 -->
+	<select id="sellerInfo" resultType="Goods">
+		select distinct a.sellerId, b.shop_name
+		from tb_goods as a
+		left join user_info as b
+		on a.sellerId = b.user_id
+		where a.sellerId = #{sellerId}
+	</select>
+	 
+	<!-- 상품 등록 -->
+	<insert id="write">
+		insert into tb_goods (sellerId, goodsName, goodsPrice, goodsStock, goodsOtp, goodsDeli, goodsContents, cateCode, goodsStatu, goodsImg)
+			values (#{sellerId}, #{goodsName}, #{goodsPrice}, #{goodsStock}, #{goodsOtp}, #{goodsDeli}, #{goodsContents}, #{cateCode}, #{goodsStatu}, #{goodsImg});  
+	</insert>
+	
+	<!-- 상품 목록 -->
+	<select id="goodslist" resultType="Goods">
+		select goodsId, goodsName, cateCode, goodsPrice, goodsStock, goodsDeli, goodsOtp, goodsImg, goodsContents, goodsStatu, regDate, sellerId
+		from tb_goods
+		where sellerId = #{sellerId}
+			order by goodsId desc
+	</select>
+	
+	<!-- 상품 수정 -->
+	<update id="goodsUpdate">
+		update tb_goods
+		set 
+			goodsName = #{goodsName}, 
+			goodsPrice = #{goodsPrice}, 
+			goodsStock = #{goodsStock}, 
+			goodsOtp = #{goodsOtp}, 
+			goodsDeli = #{goodsDeli}, 
+			goodsContents = #{goodsContents}, 
+			cateCode = #{cateCode}, 
+			goodsStatu = #{goodsStatu}, 
+			goodsImg = #{goodsImg}
+		where goodsId = #{goodsId} and sellerId = #{sellerId}
+		
+	</update>
+	
+	<!-- 상품 조회 --> 
+	<select id="goodsView" parameterType="map" resultType="Goods">
+		select goodsId, goodsName, cateCode, goodsPrice, goodsStock, goodsDeli, goodsOtp, goodsImg, goodsContents, goodsStatu, regDate, sellerId
+		from tb_goods
+		where goodsId = #{goodsId} and sellerId = #{sellerId}
+	</select>
+	
+	<!-- 상품 삭제 -->
+	<delete id="goodsDelete" parameterType="map">
+	    DELETE FROM tb_goods
+	    WHERE goodsId = #{goodsId} AND sellerId = #{sellerId}
+	</delete>
 
 </mapper>

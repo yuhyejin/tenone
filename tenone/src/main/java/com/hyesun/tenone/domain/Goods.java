@@ -35,6 +35,8 @@ public class Goods {
 	private String goodsStatu;	// 판매상태  
 	private Date regDate;	// 등록일자 
 	private Date updateDate;	// 수정일
+	private String shop_name; // 판매샵
+	
 	public Integer getGoodsId() {
 		return goodsId;
 	}
@@ -113,14 +115,20 @@ public class Goods {
 	public void setUpdateDate(Date updateDate) {
 		this.updateDate = updateDate;
 	}
+	
+	public String getShop_name() {
+		return shop_name;
+	}
+	public void setShop_name(String shop_name) {
+		this.shop_name = shop_name;
+	}
 	@Override
 	public String toString() {
 		return "Goods [goodsId=" + goodsId + ", sellerId=" + sellerId + ", goodsName=" + goodsName + ", goodsPrice="
 				+ goodsPrice + ", goodsImg=" + goodsImg + ", goodsStock=" + goodsStock + ", goodsOtp=" + goodsOtp
 				+ ", goodsDeli=" + goodsDeli + ", goodsContents=" + goodsContents + ", cateCode=" + cateCode
-				+ ", goodsStatu=" + goodsStatu + ", regDate=" + regDate + ", updateDate=" + updateDate + "]";
+				+ ", goodsStatu=" + goodsStatu + ", regDate=" + regDate + ", updateDate=" + updateDate + ", shop_name="
+				+ shop_name + "]";
 	}
-	
-	
 	
 }
