@@ -8,20 +8,56 @@
 	<select id="getListPaging" resultType="Goods" parameterType="hashMap">
 	   select goodsId, goodsName, cateCode, goodsPrice, goodsStock, goodsDeli, goodsOtp, goodsImg, goodsContents, goodsStatu, regDate, sellerId
 	   from tb_goods
-	   where sellerId = #{sellerId}
+	   <where>
+	      <choose>
+	         <!-- searchType과 keyword가 모두 존재하는 경우 -->
+	         <when test="searchType != null and keyword != null">
+	            <if test="searchType.equals('goodsName')">
+	               AND goodsName LIKE CONCAT('%', #{keyword}, '%')
+	            </if>
+	            <if test="searchType.equals('goodsStatu')">
+	               AND goodsStatu LIKE CONCAT('%', #{keyword}, '%')
+	            </if>
+	         </when>
+	         <!-- searchType과 keyword가 하나라도 null인 경우 -->
+	         <otherwise>
+	            <if test="sellerId != null">
+	               AND sellerId = #{sellerId}
+	            </if>
+	         </otherwise>
+	      </choose>
+	   </where>
 	   order by goodsId desc
-	   	limit #{displayPost}, #{postNum}
+	   	limit #{displayPost}, 10
 	</select>
 	
 	<!-- 게시물 총 갯수 -->
-	<select id="goodsCount" resultType="int">
+	<select id="goodsCount" parameterType="hashMap" resultType="int">
 		select count(goodsId) from tb_goods
-		where sellerId = #{sellerId}
+		<where>
+	      <choose>
+	         <!-- searchType과 keyword가 모두 존재하는 경우 -->
+	         <when test="searchType != null and keyword != null">
+	            <if test="searchType.equals('goodsName')">
+	               AND goodsName LIKE CONCAT('%', #{keyword}, '%')
+	            </if>
+	            <if test="searchType.equals('goodsStatu')">
+	               AND goodsStatu LIKE CONCAT('%', #{keyword}, '%')
+	            </if>
+	         </when>
+	         <!-- searchType과 keyword가 하나라도 null인 경우 -->
+	         <otherwise>
+	            <if test="sellerId != null">
+	               AND sellerId = #{sellerId}
+	            </if>
+	         </otherwise>
+	      </choose>
+	   </where>
 	</select>
 	
 	<!-- 판매자 정보 -->
 	<select id="sellerInfo" resultType="Goods">
-		select distinct a.sellerId, b.shop_name
+		select distinct(a.sellerId), b.shop_name
 		from tb_goods as a
 		left join user_info as b
 		on a.sellerId = b.user_id

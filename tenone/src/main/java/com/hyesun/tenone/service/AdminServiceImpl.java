@@ -39,14 +39,14 @@ public class AdminServiceImpl implements AdminService {
 	
 	// 게시물 총 갯수
 	@Override
-	public int goodsCount(String sellerId) throws Exception {
-		return adminDao.goodsCount(sellerId);
+	public int goodsCount(String sellerId, String searchType, String keyword) throws Exception {
+		return adminDao.goodsCount(sellerId, searchType, keyword);
 	}
 	
 	// 게시물 목록 + 페이징
 	@Override
-	public List<Goods> getListPaging(String sellerId, int displayPost, int postNum) throws Exception {
-		return adminDao.getListPaging(sellerId, displayPost, postNum);
+	public List<Goods> getListPaging(String sellerId, int displayPost, int postNum, String searchType, String keyword) throws Exception {
+		return adminDao.getListPaging(sellerId, displayPost, postNum, searchType, keyword);
 	}
 	
 	// 판매자 정보

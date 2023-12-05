@@ -13,6 +13,7 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css" rel="stylesheet"/>
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
 	
+	<script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
 	<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
 	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js"></script>
 </head>
@@ -102,12 +103,21 @@
                     <td></td>
                     <td></td>
                     <td class="goods-add"><a href="/admin/write" class="modal-goods">상품 추가하기</a></td>
+                    <td>
+	                    <select class="form-select" name="searchType">
+			                <option value="goodsName" <c:if test="${page.searchType eq 'goodsName'}">selected</c:if>>상품명</option>
+			                <option value="goodsStatu" <c:if test="${page.searchType eq 'goodsStatu'}">selected</c:if>>판매 상태</option>
+		              </select>
+	              </td>
                     <td class="search">
                         <p>
                             <i class='bx bx-search icon'></i>
-                            <input type="text" placeholder="검색어를 입력해주세요.">
+                            <input type="text" name="keyword" value="${page.keyword}" placeholder="검색어를 입력해주세요.">
                         </p>
                         
+                    </td>
+                    <td>
+                    	<button type="button" id="searchBtn">검색</button>
                     </td>
                 </tr>
                </thead> 
@@ -165,7 +175,7 @@
 		  <ul class="pagination mt-4 ms-4">
 			<c:if test="${page.prev}">
 				<li class="page-item">
-			      <a class="page-link" href="/admin/list?num=${page.startPageNum -1}" aria-label="Previous">
+			      <a class="page-link" href="/admin/list?num=${page.startPageNum -1}${page.searchTypeKeyword}" aria-label="Previous">
 			        <span aria-hidden="true">&laquo;</span>
 			      </a>
 			    </li>
@@ -174,7 +184,7 @@
 			  <c:forEach begin="${page.startPageNum }" end="${page.endPageNum}" var="num">
 			  	<c:if test="${select != num}">
 			  		<li class="page-item">
-			  			<a class="page-link" href="/admin/list?num=${num}">${num}</a>
+			  			<a class="page-link" href="/admin/list?num=${num}${page.searchTypeKeyword}">${num}</a>
 			  		</li>
 			  	</c:if>
 			  	<c:if test="${select == num}">
@@ -186,7 +196,7 @@
 		  
 		    <c:if test="${page.next}">
 		    	<li class="page-item">
-			      <a class="page-link" href="/admin/list?num=${page.endPageNum + 1}" aria-label="Next">
+			      <a class="page-link" href="/admin/list?num=${page.endPageNum + 1}${page.searchTypeKeyword}" aria-label="Next">
 			        <span aria-hidden="true">&raquo;</span>
 			      </a>
 			    </li>
@@ -217,25 +227,32 @@
     </section>
 
 
-    <script src="script.js"></script>
-    <script>
-    $(document).on('click', '.delete_link', function(event){
-    	event.preventDefault();
-    	var deleteUrl = #(this).attr('href');
-    	
-    	$.ajax({
-    		url: deleteUrl,
-    		type: 'DELETE',
-    		success: function(data) {
-    			alert('상품이 삭제되었습니다.');
-    			window.location.href = '/admin/list';
-    		},
-    		error: function() {
-    			alert('상품 삭제에 실패했습니다.');
-    		}
-    	});
+<script>
+	$(document).on('click', '.delete_link', function(event){
+	    event.preventDefault();
+	    var deleteUrl = $(this).attr('href');
+	    	
+	    $.ajax({
+	    	url: deleteUrl,
+	    	type: 'DELETE',
+	    	success: function(data) {
+	    		alert('상품이 삭제되었습니다.');
+	    		window.location.href = '/admin/list';
+	    	},
+	    	error: function() {
+	    		alert('상품 삭제에 실패했습니다.');
+	    	}
+	    });
     });
-    </script>
+	
+	$(document).on('click', '#searchBtn', function(event){
+		var searchType = $('[name=searchType]').val();
+		var keyword = $('input[name=keyword]').val();
+		
+		location.href = "/admin/list?num=1" + "&searchType=" + searchType + "&keyword=" + keyword;
+	});
+    
+</script>
     
 </body>
 </html>

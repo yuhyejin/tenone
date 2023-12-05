@@ -50,19 +50,22 @@ public class AdminDaoImpl implements AdminDao {
 	
 	// 게시물 총 갯수
 	@Override
-	public int goodsCount(String sellerId) throws Exception {
-		return session.selectOne(namespace + "goodsCount", sellerId);
+	public int goodsCount(String sellerId, String searchType, String keyword) throws Exception {
+		HashMap<String, Object> data = new HashMap<String, Object>();
+		data.put("sellerId", sellerId);
+		data.put("searchType", searchType);
+		data.put("keyword", keyword);
+		return session.selectOne(namespace + "goodsCount", data);
 	}
 	
 	// 게시물 목록 + 페이징
-	@SuppressWarnings("unchecked")
 	@Override
-	public List<Goods> getListPaging(String sellerId, int displayPost, int postNum) throws Exception {
-		@SuppressWarnings("rawtypes")
-		HashMap data = new HashMap();
+	public List<Goods> getListPaging(String sellerId, int displayPost, int postNum, String searchType, String keyword) throws Exception {
+		HashMap<String, Object> data = new HashMap<String, Object>();
 		data.put("sellerId", sellerId);
 		data.put("displayPost", displayPost);
-		data.put("postNum", postNum);
+		data.put("searchType", searchType);
+		data.put("keyword", keyword);
 		
 		return session.selectList(namespace + "getListPaging", data);
 	}

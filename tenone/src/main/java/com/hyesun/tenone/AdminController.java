@@ -84,7 +84,9 @@ public class AdminController {
 	
 	// 상품목록 (페이징)
 	@GetMapping("/list")
-	public String getListPaging(@RequestParam("num") int num, Model model, HttpServletRequest req) throws Exception {
+	public String getListPaging(@RequestParam(value = "num",required = false, defaultValue = "1") int num, Model model, HttpServletRequest req,
+			@RequestParam(value = "searchType",required = false, defaultValue = "title") String searchType,
+			   @RequestParam(value = "keyword",required = false, defaultValue = "") String keyword) throws Exception {
 		logger.info("get goods list");
 		
 		HttpSession session = req.getSession();
@@ -96,10 +98,13 @@ public class AdminController {
 		Paging page = new Paging();
 		
 		page.setNum(num);
-		page.setCount(adminService.goodsCount(sellerId));
+		page.setCount(adminService.goodsCount(sellerId, searchType, keyword));
+		
+		page.setSearchType(searchType);
+		page.setKeyword(keyword);
 		
 		List<Goods> list = null;
-		list = adminService.getListPaging(sellerId, page.getDisplayPost(), page.getEndPageNum());
+		list = adminService.getListPaging(sellerId, page.getDisplayPost(), page.getPostNum(), searchType, keyword);
 		
 		model.addAttribute("list", list);
 		model.addAttribute("page", page);
@@ -117,7 +122,6 @@ public class AdminController {
 		HttpSession session = req.getSession();
 		User sellerInfo = (User)session.getAttribute("user");
 		String sellerId = (String)sellerInfo.getUser_id();
-		System.out.println("sellerID ==== " + sellerId);
 		
 		adminService.goodsDelete(goodsId, sellerId);
 		

@@ -18,10 +18,10 @@ public interface AdminDao {
 	public void goodsDelete(Integer goodsId, String sellerId) throws Exception;
 
 	// 게시물 총 갯수
-	public int goodsCount(String sellerId) throws Exception;
+	public int goodsCount(String sellerId, String searchType, String keyword) throws Exception;
 	
 	// 게시물 목록 + 페이징
-	public List<Goods> getListPaging(String sellerId, int displayPost, int postNum) throws Exception;
+	public List<Goods> getListPaging(String sellerId, int displayPost, int postNum, String searchType, String keyword) throws Exception;
 
 	// 판매자 정보 
 	public Goods sellerInfo(String sellerId) throws Exception;
