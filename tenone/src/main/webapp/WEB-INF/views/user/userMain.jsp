@@ -41,12 +41,18 @@
 </div>
 
 <div class="category">
-    <a href="/goods/category/취업 선물">
+    <a href="/goods/category/생일 선물">
     	<img src="/resources/img/birth_cate.jpg" class="cate_img">
     </a>
-    <img src="/resources/img/company_cate.jpg" class="cate_img">
-    <img src="/resources/img/fighting_cate.png" class="cate_img">
-    <img src="/resources/img/home_cate.jpg" class="cate_img">
+    <a href="/goods/category/취업 선물">
+    	<img src="/resources/img/company_cate.jpg" class="cate_img">
+    </a>
+    <a href="/goods/category/응원 선물">
+    	<img src="/resources/img/fighting_cate.png" class="cate_img">
+    </a>
+    <a href="/goods/category/집들이 선물">
+    	<img src="/resources/img/home_cate.jpg" class="cate_img">
+    </a>
 </div>
 
 <div class="category text-center">
