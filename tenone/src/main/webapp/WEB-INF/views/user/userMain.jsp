@@ -40,26 +40,23 @@
     <span>어떤 선물인가요?</span>
 </div>
 
-<div class="category">
+<div class="category text-center">
     <a href="/goods/category/생일 선물">
     	<img src="/resources/img/birth_cate.jpg" class="cate_img">
+    	<span class="cate_txt">생일 선물</span>
     </a>
     <a href="/goods/category/취업 선물">
     	<img src="/resources/img/company_cate.jpg" class="cate_img">
+    	<span class="cate_txt">취업 선물</span>
     </a>
     <a href="/goods/category/응원 선물">
     	<img src="/resources/img/fighting_cate.png" class="cate_img">
+    	<span class="cate_txt">응원 선물</span>
     </a>
     <a href="/goods/category/집들이 선물">
     	<img src="/resources/img/home_cate.jpg" class="cate_img">
+    	<span class="cate_txt">집들이</span>
     </a>
-</div>
-
-<div class="category text-center">
-    <span class="cate_txt">생일 선물</span>
-    <span class="cate_txt">취업 선물</span>
-    <span class="cate_txt">응원 선물</span>
-    <span class="cate_txt">집들이</span>
 </div>
 
 <div class="txt">
