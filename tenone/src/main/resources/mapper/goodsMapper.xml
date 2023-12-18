@@ -10,12 +10,4 @@
 		WHERE cateCode = #{cateCode}
 	</select>
 	
-	<select id="selectShopName" resultType="String" parameterType="String">
-		SELECT shop_name
-		FROM tb_goods
-		JOIN user_info
-		ON tb_goods.sellerId = user_info.user_id
-		WHERE sellerId = #{sellerId}
-	</select>
-	
 </mapper>

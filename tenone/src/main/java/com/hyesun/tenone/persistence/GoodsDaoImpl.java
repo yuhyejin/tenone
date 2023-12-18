@@ -19,6 +19,5 @@ public class GoodsDaoImpl implements GoodsDao {
 	public List<Goods> getGoodsCategory(String cateCode) throws Exception {
 		return session.selectList(namespace + "selectCategory", cateCode);
 	}
-
 	
 }
