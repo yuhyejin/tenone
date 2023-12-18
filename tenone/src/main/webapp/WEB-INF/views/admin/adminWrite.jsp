@@ -14,6 +14,7 @@
   </head>
 <body>
 	<form role="form" method="post" action="/admin/postWrite" autocomplete="off">
+		<input type="hidden" name="shop_name" value="${shopName}">
 		<div class="adminSidebar">
 	        <div>
 	          <div class="side_head d-flex flex-row mb-2">
@@ -40,20 +41,23 @@
 	            <div class="mt-3">
 	              <div class="d-flex">
 	                <label for="basic-url" class="form-label">대표 이미지</label>
-	                <span class="label_text">(메인에 노출될 썸네일, 가로 900px 이상, 최대 5장)</span>
+	                <span class="label_text">(메인에 노출될 썸네일, 가로 900px 이상, 최대 1장)</span>
 	              </div>
-	              <div class="d-flex">
-	                <div class="preview_container" id="previewContainer"></div>
-	              </div>
-	              <div id="addProductImgBtn">
+	              <div class="d-flex" id="addProductImgBtn">
+	              	<div class="preview_container" id="previewContainer">
+
+	              	</div>
 	                <div class="add_img_uploader">
 	                  <i class='bx bx-plus add_img_icon'></i>
 	                  <label class="fileUploade" for="gds"></label>
 	                  <input type="file" id="gds" name="goodsImg" multiple onchange="previewImage()" accept=".png,.jpg,.jpge" style="display: none;">
-	                  
 	                </div>
 	                
 	              </div>
+	              <button type="button" class="imgDelBtn" id="deleteImageBtn" onclick="deleteImage()" style="display: none;">
+				      <i class='bx bx-x'></i>
+				  </button>
+	              
 	            </div>
 	
 	            <div class="mt-3">
@@ -123,7 +127,7 @@
 	
 	          <div class="admin_content">
 	            <textarea class="textarea" name="goodsContents"></textarea>
-	            <!-- <textarea name="goodsContent" id="goods_textarea"></textarea> -->
+<!-- 	            <textarea name="goodsContent" id="goods_textarea"></textarea> -->
 	          </div>
 	        </div>
 	      </div>
@@ -151,16 +155,71 @@
       function checkNumber(obj) {
         obj.value = comma(uncomma(obj.value));
       }
+      
+      function previewImage() {
+          var input = document.getElementById('gds');
+          var previewContainer = document.getElementById('previewContainer');
+          var deleteImageBtn = document.getElementById('deleteImageBtn');
 
-      // 이미지 썸네일 업로드
+          // 이미지를 선택하지 않은 경우
+          if (input.files.length === 0) {
+              previewContainer.innerHTML = ''; // 미리보기 초기화
+              deleteImageBtn.style.display = 'none'; // 삭제 버튼 숨기기
+              return;
+          }
+
+          var file = input.files[0];
+          var reader = new FileReader();
+
+          reader.onload = function (e) {
+              var image = new Image();
+              image.src = e.target.result;
+
+              image.onload = function () {
+                  if (image.width >= 900) {
+                      previewContainer.innerHTML = ''; // 미리보기 초기화
+                      var preview = document.createElement('img');
+                      preview.src = e.target.result;
+                      preview.classList.add('preview');
+                      preview.classList.add('rounded');
+                      previewContainer.appendChild(preview);
+                      deleteImageBtn.style.display = 'block'; // 삭제 버튼 표시
+                  } else {
+                      alert('가로 크기가 900px 이상인 이미지만 업로드 가능합니다.');
+                      input.value = ''; // 파일 선택 초기화
+                  }
+              };
+          };
+
+          if (file) {
+              reader.readAsDataURL(file);
+          }
+      }
+
+      function deleteImage() {
+          var input = document.getElementById('gds');
+          var previewContainer = document.getElementById('previewContainer');
+          var deleteImageBtn = document.getElementById('deleteImageBtn');
+
+          // Clear the file input
+          input.value = '';
+
+          // Hide the preview container
+          previewContainer.innerHTML = '';
+          deleteImageBtn.style.display = 'none'; // 삭제 버튼 숨기기
+      }
+      
+      
+
+      /* // 이미지 썸네일 업로드
       function previewImage() {
         var input = document.getElementById('gds');
         var previewContainer = document.getElementById('previewContainer');
-        var maxImages = 5;
+        var maxImages = 1;
 
         // 이미지 개수가 최대 허용 개수보다 많으면 추가 업로드 막기
         if (previewContainer.children.length + input.files.length > maxImages) {
-          alert('이미지는 최대 5개까지만 업로드 가능합니다.');
+          alert('이미지는 최대 1개까지만 업로드 가능합니다.');
           input.value = ''; // 파일 선택 초기화
           return;
         }
@@ -193,14 +252,14 @@
             reader.readAsDataURL(file);
           }
         }
-      }
+      } */
       
-      // 이지윅 적용
-      // ClassicEditor
-      //   .create(document.querySelector('#goods_textarea'))
-      //   .catch(error=>{
-      //     console.error(error);
-      //   });
+      //이지윅 적용
+/*       ClassicEditor
+        .create(document.querySelector('#goods_textarea'))
+        .catch(error=>{
+          console.error(error);
+        }); */
 
     </script>
   </body>

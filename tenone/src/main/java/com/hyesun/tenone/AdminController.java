@@ -34,8 +34,16 @@ public class AdminController {
 	
 	// 상품 등록 Get
 	@GetMapping("/write")
-	public String getGoodsWrite() throws Exception {
+	public String getGoodsWrite(HttpServletRequest req, Model model) throws Exception {
 		logger.info("get goods write");
+		HttpSession session = req.getSession();
+		User sellerInfo = (User)session.getAttribute("user");
+		String sellerId = (String)sellerInfo.getUser_id();
+		
+		Goods sellerShop = adminService.sellerInfo(sellerId);
+		
+		model.addAttribute("shopName", sellerShop.getShop_name());
+		
 		return "admin/adminWrite";
 	}
 	

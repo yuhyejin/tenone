@@ -6,7 +6,7 @@
  
 	<!-- 게시물 목록(페이징) -->
 	<select id="getListPaging" resultType="Goods" parameterType="hashMap">
-	   select goodsId, goodsName, cateCode, goodsPrice, goodsStock, goodsDeli, goodsOtp, goodsImg, goodsContents, goodsStatu, regDate, sellerId
+	   select goodsId, goodsName, cateCode, goodsPrice, goodsStock, goodsDeli, goodsOtp, goodsImg, goodsContents, goodsStatu, regDate, sellerId, shop_name
 	   from tb_goods
 	   <where>
 	      <choose>
@@ -66,13 +66,13 @@
 	 
 	<!-- 상품 등록 -->
 	<insert id="write">
-		insert into tb_goods (sellerId, goodsName, goodsPrice, goodsStock, goodsOtp, goodsDeli, goodsContents, cateCode, goodsStatu, goodsImg)
-			values (#{sellerId}, #{goodsName}, #{goodsPrice}, #{goodsStock}, #{goodsOtp}, #{goodsDeli}, #{goodsContents}, #{cateCode}, #{goodsStatu}, #{goodsImg});  
+		insert into tb_goods (sellerId, goodsName, goodsPrice, goodsStock, goodsOtp, goodsDeli, goodsContents, cateCode, goodsStatu, goodsImg, shop_name)
+			values (#{sellerId}, #{goodsName}, #{goodsPrice}, #{goodsStock}, #{goodsOtp}, #{goodsDeli}, #{goodsContents}, #{cateCode}, #{goodsStatu}, #{goodsImg}, #{shop_name});  
 	</insert>
 	
 	<!-- 상품 목록 -->
 	<select id="goodslist" resultType="Goods">
-		select goodsId, goodsName, cateCode, goodsPrice, goodsStock, goodsDeli, goodsOtp, goodsImg, goodsContents, goodsStatu, regDate, sellerId
+		select goodsId, goodsName, cateCode, goodsPrice, goodsStock, goodsDeli, goodsOtp, goodsImg, goodsContents, goodsStatu, regDate, sellerId, shop_name
 		from tb_goods
 		where sellerId = #{sellerId}
 			order by goodsId desc
@@ -97,7 +97,7 @@
 	
 	<!-- 상품 조회 --> 
 	<select id="goodsView" parameterType="map" resultType="Goods">
-		select goodsId, goodsName, cateCode, goodsPrice, goodsStock, goodsDeli, goodsOtp, goodsImg, goodsContents, goodsStatu, regDate, sellerId
+		select goodsId, goodsName, cateCode, goodsPrice, goodsStock, goodsDeli, goodsOtp, goodsImg, goodsContents, goodsStatu, regDate, sellerId, shop_name
 		from tb_goods
 		where goodsId = #{goodsId} and sellerId = #{sellerId}
 	</select>
