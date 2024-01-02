@@ -19,5 +19,10 @@ public class GoodsDaoImpl implements GoodsDao {
 	public List<Goods> getGoodsCategory(String cateCode) throws Exception {
 		return session.selectList(namespace + "selectCategory", cateCode);
 	}
+
+	@Override
+	public List<Goods> getGoodsView(Integer goodsId) throws Exception {
+		return session.selectList(namespace+"selectView", goodsId);
+	}
 	
 }

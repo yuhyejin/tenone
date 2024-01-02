@@ -3,8 +3,6 @@ package com.hyesun.tenone;
 import java.util.List;
 
 import javax.inject.Inject;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpSession;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -13,9 +11,9 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import com.hyesun.tenone.domain.Goods;
-import com.hyesun.tenone.domain.User;
 import com.hyesun.tenone.service.GoodsService;
 
 @Controller
@@ -44,6 +42,16 @@ public class GoodsController {
 		
 		model.addAttribute("goodsList", goodsList);
 		return "user/goodsList";
+	}
+	
+	// 상세조회
+	@GetMapping("/goodsView")
+	public String getGoodsView(@RequestParam(value="goodsId",required=false,defaultValue="") Integer goodsId, Model model) throws Exception {
+		logger.info("get goodsView");
+		
+		List<Goods> goodsViewList = goodsService.getGoodsView(goodsId);
+		model.addAttribute("goodsView", goodsViewList);
+		return "user/goodsView";
 	}
 
 }

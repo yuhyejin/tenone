@@ -10,4 +10,11 @@
 		WHERE cateCode = #{cateCode}
 	</select>
 	
+	<!-- 상세조회 -->
+	<select id="selectView" resultType="Goods" parameterType="Integer">
+		SELECT *
+		FROM tb_goods
+		WHERE goodsId = #{goodsId}
+	</select>
+	
 </mapper>

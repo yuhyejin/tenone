@@ -19,4 +19,9 @@ public class GoodsServiceImpl implements GoodsService{
 		return goodsDao.getGoodsCategory(cateCode);
 	}
 
+	@Override
+	public List<Goods> getGoodsView(Integer goodsId) throws Exception {
+		return goodsDao.getGoodsView(goodsId);
+	}
+
 }
