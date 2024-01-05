@@ -3,17 +3,25 @@ package com.hyesun.tenone;
 import java.util.List;
 
 import javax.inject.Inject;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 
 import com.hyesun.tenone.domain.Goods;
+import com.hyesun.tenone.domain.Like;
+import com.hyesun.tenone.domain.User;
 import com.hyesun.tenone.service.GoodsService;
 
 @Controller
@@ -45,13 +53,59 @@ public class GoodsController {
 	}
 	
 	// 상세조회
-	@GetMapping("/goodsView")
-	public String getGoodsView(@RequestParam(value="goodsId",required=false,defaultValue="") Integer goodsId, Model model) throws Exception {
+	@GetMapping("/goodsView/{goodsId}")
+	public String getGoodsView(@PathVariable Integer goodsId, Model model, HttpServletRequest req) throws Exception {
 		logger.info("get goodsView");
 		
-		List<Goods> goodsViewList = goodsService.getGoodsView(goodsId);
-		model.addAttribute("goodsView", goodsViewList);
+		HttpSession session = req.getSession();
+		User sellerInfo = (User)session.getAttribute("user");
+		String userId = (String)sellerInfo.getUser_id();
+		
+		if(goodsId != null) {
+			Goods goodsViewList = goodsService.getGoodsView(goodsId);
+			model.addAttribute("goodsView", goodsViewList);
+			logger.info("get likeVal");
+			System.out.println("222222===" + goodsService.getGoodsLikeVal(goodsId));
+			model.addAttribute("likeVal", goodsService.getGoodsLikeVal(goodsId));
+			model.addAttribute("userId", userId);
+		} else {
+			System.out.println("dadasd== null 입니다.");
+		}
 		return "user/goodsView";
+	}
+	
+	// 상품 상세페이지 찜하기
+	@PostMapping("/{goodsId}")
+	public ResponseEntity<String> goodsLike(@RequestBody Like like) {
+		ResponseEntity<String> entity = null;
+		logger.info("post goodsLike");
+		
+		try {
+			System.out.println("ddddd=== " + like );
+			goodsService.setGoodsLike(like);
+			entity = new ResponseEntity<String>("SUCCESS",HttpStatus.OK);
+		} catch(Exception e) {
+			e.printStackTrace();
+			entity = new ResponseEntity<String>(e.getMessage(), HttpStatus.BAD_REQUEST);
+		}
+		return entity;
+	}
+	
+	// 상품 상세페이지 찜취소
+	@DeleteMapping("/{goodsId}")
+	public ResponseEntity<String> goodsLikeCancel(Like like) {
+		ResponseEntity<String> entity = null;
+		logger.info("delete goodsLikeCancel");
+		
+		try {
+			System.out.println("ooooo==" + like);
+			goodsService.goodsLikeCancel(like);
+			entity = new ResponseEntity<String>("SUCCESS",HttpStatus.OK);
+		}catch(Exception e) {
+			e.printStackTrace();
+			entity = new ResponseEntity<String>(e.getMessage(), HttpStatus.BAD_REQUEST);
+		}
+		return entity;
 	}
 
 }

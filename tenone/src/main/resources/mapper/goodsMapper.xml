@@ -17,4 +17,23 @@
 		WHERE goodsId = #{goodsId}
 	</select>
 	
+	<!-- 해당 상품 찜 여부 확인용 데이터 가져오기 -->
+	<select id="getGoodsLikeVal" resultType="com.hyesun.tenone.domain.Like" parameterType="com.hyesun.tenone.domain.Like">
+		SELECT *
+		FROM tb_like
+		WHERE lgoodsId = #{lgoodsId}
+	</select>
+	
+	<!-- 상품 상세 페이지 찜하기 -->
+	<insert id="setGoodsLike">
+		INSERT INTO tb_like(lgoodsId, luserId)
+		VALUES(#{lgoodsId}, #{luserId})
+	</insert>
+	
+	<!-- 상품 상세페이지 찜취소 -->
+	<delete id="goodsLikeCancel" parameterType="Integer">
+		DELETE FROM tb_like
+		WEHRE likeId = #{likeId}
+	</delete>
+	 
 </mapper>

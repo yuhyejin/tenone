@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.hyesun.tenone.domain.Goods;
+import com.hyesun.tenone.domain.Like;
 import com.hyesun.tenone.persistence.GoodsDao;
 
 @Service
@@ -20,8 +21,23 @@ public class GoodsServiceImpl implements GoodsService{
 	}
 
 	@Override
-	public List<Goods> getGoodsView(Integer goodsId) throws Exception {
+	public Goods getGoodsView(Integer goodsId) throws Exception {
 		return goodsDao.getGoodsView(goodsId);
+	}
+
+	@Override
+	public Like getGoodsLikeVal(Integer goodsId) {
+		return goodsDao.getGoodsLikeVal(goodsId);
+	}
+
+	@Override
+	public void setGoodsLike(Like like) {
+		goodsDao.setGoodsLike(like);
+	}
+
+	@Override
+	public void goodsLikeCancel(Like like) {
+		goodsDao.goodsLikeCancel(like);
 	}
 
 }

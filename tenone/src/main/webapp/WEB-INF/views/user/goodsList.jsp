@@ -34,7 +34,7 @@
         <div class="content_wrap">
         	<c:forEach items="${goodsList}" var="goods">
 	            <div class="goodsSize img_me">
-	            	<a href="/goods/goodsView?goodsId=${goods.goodsId}">
+	            	<a href="/goods/goodsView/${goods.goodsId}">
 		                <img src="/resources/img/company_cate.jpg" class="img">
 		                <span class="shop_txt">${goods.shop_name}<br></span>
 		                <span>${goods.goodsName}<br></span>

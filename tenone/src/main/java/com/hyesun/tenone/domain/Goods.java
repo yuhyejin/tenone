@@ -18,6 +18,7 @@ public class Goods {
     goodsStatu varchar(10),
     regDate timestamp default now(),
     updateDate timestamp default now(),
+    shop_name varchar(80),
     primary key(goodsId, sellerId),
     foreign key(sellerId) references user_info(user_id)
 );
