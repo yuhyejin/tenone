@@ -40,5 +40,15 @@ public class GoodsDaoImpl implements GoodsDao {
 	public void goodsLikeCancel(Like like) {
 		session.delete(namespace+"goodsLikeCancel", like);
 	}
+
+	@Override
+	public List<Goods> getLikeList(String luserId) {
+		return session.selectList(namespace+"getLikeList", luserId);
+	}
+
+	@Override
+	public int likeCount(String luserId) {
+		return session.selectOne(namespace+"likeCount", luserId);
+	}
 	
 }

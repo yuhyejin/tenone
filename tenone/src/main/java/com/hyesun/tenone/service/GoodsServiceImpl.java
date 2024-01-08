@@ -40,4 +40,14 @@ public class GoodsServiceImpl implements GoodsService{
 		goodsDao.goodsLikeCancel(like);
 	}
 
+	@Override
+	public List<Goods> getLikeList(String luserId) {
+		return goodsDao.getLikeList(luserId);
+	}
+
+	@Override
+	public int likeCount(String luserId) {
+		return goodsDao.likeCount(luserId);
+	}
+
 }

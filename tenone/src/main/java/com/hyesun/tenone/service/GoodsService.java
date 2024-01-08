@@ -21,5 +21,11 @@ public interface GoodsService {
 
 	// 상품 찜하기 취소 
 	public void goodsLikeCancel(Like like);
+	
+	// 찜하기 목록
+	public List<Goods> getLikeList(String luserId);
+	
+	// 찜 갯수
+	public int likeCount(String luserId);
 
 }

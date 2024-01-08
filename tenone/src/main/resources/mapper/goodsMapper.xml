@@ -31,9 +31,26 @@
 	</insert>
 	
 	<!-- 상품 상세페이지 찜취소 -->
-	<delete id="goodsLikeCancel" parameterType="Integer">
+	<delete id="goodsLikeCancel" parameterType="String">
 		DELETE FROM tb_like
 		WEHRE likeId = #{likeId}
 	</delete>
+	
+	<!-- 찜 목록 데이터 가져오기 -->
+	<select id="getLikeList" resultType="Goods" parameterType="String">
+		SELECT *
+		FROM tb_like a
+		LEFT JOIN tb_goods b
+		ON a.lgoodsId = b.goodsId
+		WHERE luserId = #{luserId}
+		ORDER BY likeId DESC
+	</select>
+	
+	<!-- 찜 총 갯수 -->
+	<select id="likeCount" resultType="int" parameterType="String">
+		SELECT COUNT(likeId)
+		FROM tb_like
+		WHERE luserId = #{luserId}
+	</select>
 	 
 </mapper>

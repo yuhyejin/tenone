@@ -107,5 +107,23 @@ public class GoodsController {
 		}
 		return entity;
 	}
+	
+	@GetMapping("/likeList")
+	public String getLikeList(Model model, HttpServletRequest req) {
+		logger.info("get getLikeList");
+		
+		HttpSession session = req.getSession();
+		User sellerInfo = (User)session.getAttribute("user");
+		String userId = (String)sellerInfo.getUser_id();
+		
+		List<Goods> likeList = goodsService.getLikeList(userId);
+		int likeCount = goodsService.likeCount(userId);
+		System.out.println("찜 갯수===== " + likeCount);
+		
+		model.addAttribute("likeList", likeList);
+		model.addAttribute("likeCount", likeCount);
+		
+		return "user/likeList";
+	}
 
 }
