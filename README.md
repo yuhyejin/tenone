@@ -32,7 +32,7 @@
 <img width="1139" alt="스크린샷 2023-07-13 오전 12 25 37" src="https://github.com/yuhyejin/tenone/assets/74812194/14ff2593-b760-4625-a8a2-e8a68dba36a0">
 
 
-## 중간현황
+## 기능
 <img width="720" alt="스크린샷 2024-01-15 오후 11 22 52" src="https://github.com/yuhyejin/tenone/assets/74812194/9ca9a48f-64b7-443b-a76c-662da2332125">
 
 - 로그인 / 로그아웃 / 회원가입 (이메일 인증) - OK
