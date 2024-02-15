@@ -33,7 +33,7 @@
 
 
 ## 기능
-<img width="745" alt="스크린샷 2024-02-15 오후 3 18 51" src="https://github.com/yuhyejin/tenone/assets/74812194/4bc5e5a8-70bf-4503-a52e-eceba4a4e269">
+<img width="735" alt="스크린샷 2024-02-15 오후 3 19 32" src="https://github.com/yuhyejin/tenone/assets/74812194/d2c8df72-9303-4983-bf1e-745e5beacf7a">
 
 - 로그인 / 로그아웃 / 회원가입 (이메일 인증) - 완료
 - 관리자 페이지 (상품 등록, 상품 삭제, 상품 수정, 페이징, 검색) - 완료
