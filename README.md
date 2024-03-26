@@ -32,6 +32,11 @@
 <img width="1139" alt="스크린샷 2023-07-13 오전 12 25 37" src="https://github.com/yuhyejin/tenone/assets/74812194/14ff2593-b760-4625-a8a2-e8a68dba36a0">
 
 
+## API 명세서
+
+<img width="485" alt="스크린샷 2024-03-26 오후 10 00 33" src="https://github.com/yuhyejin/tenone/assets/74812194/beb9aa07-ab73-4c32-b21b-172daff43e1a">
+
+
 ## 기능
 <img width="735" alt="스크린샷 2024-02-15 오후 3 19 32" src="https://github.com/yuhyejin/tenone/assets/74812194/d2c8df72-9303-4983-bf1e-745e5beacf7a">
 
