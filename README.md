@@ -20,10 +20,10 @@
 ### Backend
 - `java 11`
 - `jdk 11`
-- **IDE** : STS 3
-- **Framework** : springframework(5.0.7)
-- **Database** : MySQL
-- **ORM** : Mybatis
+- STS 3
+- springframework(5.0.7)
+- MySQL
+- Mybatis
 
   
 
