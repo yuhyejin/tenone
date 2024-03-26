@@ -47,7 +47,7 @@
 - 공구완료  - 결제
 
 
-<img width="388" alt="스크린샷 2024-03-26 오후 10 46 59" src="https://github.com/yuhyejin/tenone/assets/74812194/9be8a0d3-a3ed-4caa-bac1-9dac704d7bef">
-<img width="340" alt="스크린샷 2024-03-26 오후 10 47 27" src="https://github.com/yuhyejin/tenone/assets/74812194/d8686063-b44a-432a-89c8-698ce3f1dd6f">
-<img width="388" alt="스크린샷 2024-03-26 오후 10 46 59" src="https://github.com/yuhyejin/tenone/assets/74812194/c332a9a6-e400-4d0d-85d1-f5b37b9c7ae7">
-<img width="340" alt="스크린샷 2024-03-26 오후 10 47 42" src="https://github.com/yuhyejin/tenone/assets/74812194/3594816a-efca-4ffd-b18e-6d75809ea362">
+<img width="300" alt="스크린샷 2024-03-26 오후 10 46 59" src="https://github.com/yuhyejin/tenone/assets/74812194/9be8a0d3-a3ed-4caa-bac1-9dac704d7bef">
+<img width="300" alt="스크린샷 2024-03-26 오후 10 47 27" src="https://github.com/yuhyejin/tenone/assets/74812194/d8686063-b44a-432a-89c8-698ce3f1dd6f">
+<img width="300" alt="스크린샷 2024-03-26 오후 10 46 59" src="https://github.com/yuhyejin/tenone/assets/74812194/c332a9a6-e400-4d0d-85d1-f5b37b9c7ae7">
+<img width="300" alt="스크린샷 2024-03-26 오후 10 49 50" src="https://github.com/yuhyejin/tenone/assets/74812194/fd3aa4cb-f3c9-4258-bbd7-63ec08459396">
