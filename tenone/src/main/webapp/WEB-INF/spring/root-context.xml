@@ -14,8 +14,8 @@
 		<property name="url" value="jdbc:log4jdbc:mysql://localhost:3306/tenone?useUnicode=true&amp;characterEncoding=utf8"></property>
 		<!--property name="driverClassName" value="com.mysql.jdbc.Driver"></property>
 		<property name="url" value="jdbc:mysql://localhost:3306/springbasic?useUnicode=true&amp;characterEncoding=utf8"></property-->
-		<property name="username" value="hjeu"></property>
-		<property name="password" value="0424"></property>
+		<property name="username" value=""></property>
+		<property name="password" value=""></property>
 	</bean>
 	
 	<bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
@@ -37,7 +37,7 @@
 		 <property name="host" value="smtp.naver.com"/> <!-- 메이서버 호스트 -->
 		 <property name="port" value="587"/> <!-- 메이서버 포트번호 -->
 		 <property name="username" value="dydxkqgl@naver.com"/> <!-- 자신의 이메일 아이디 -->
-		 <property name="password" value="hjeu042499!"/> <!-- 자신의 비밀번호 -->
+		 <property name="password" value=""/> <!-- 자신의 비밀번호 -->
 		   <!-- 보안연결 SSL과 관련된 설정 -->
 		 <property name="javaMailProperties">
 		  <props>
